@@ -35,19 +35,18 @@
             $iframe.appendTo("body");
             var doc = $iframe[0].contentWindow.document;
         }
-        
+
         if (opt.importCSS)
         {
-            if ($("link[media=print]").length > 0) 
-            {
-                $("link[media=print]").each( function() {
-                    doc.write("<link type='text/css' rel='stylesheet' href='" + $(this).attr("href") + "' media='print' />");
+            var printStyles = $('style[media="print"], link[media="print"]');
+            if(printStyles.length > 0) {
+                $(printStyles).each(function() {
+                    doc.write($('<div></div>').html($(this).clone()).html());
                 });
             }
-            else 
-            {
-                $("link").each( function() {
-                    doc.write("<link type='text/css' rel='stylesheet' href='" + $(this).attr("href") + "' />");
+            else {
+                $('link, style').each(function() {
+                    doc.write($('<div></div>').html($(this).clone()).html());
                 });
             }
         }
