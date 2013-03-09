@@ -38,7 +38,6 @@
 
         if (opt.importCSS)
         {
-            var $head = $('head', doc);
             var printStyles = $('style[media="print"], link[media="print"]');
             if(printStyles.length > 0) {
                 $(printStyles).each(function() {
