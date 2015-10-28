@@ -1,7 +1,10 @@
-﻿// -----------------------------------------------------------------------
+// -----------------------------------------------------------------------
 // Eros Fratini - eros@recoding.it
-// jqprint 0.3
+// (+ little improvement by Mauro Vanetti - posta@maurovanetti.info)
 //
+// jqprint 0.3.1
+//
+// - 28/10/2015 - avoid overproduction of iframes
 // - 19/06/2009 - some new implementations, added Opera support
 // - 11/05/2009 - first sketch
 //
@@ -28,7 +31,8 @@
         }
         else 
         {
-            var $iframe = $("<iframe  />");
+            $('#delete-me-please').remove();
+            var $iframe = $("<iframe id='delete-me-please' />");
         
             if (!opt.debug) { $iframe.css({ position: "absolute", width: "0px", height: "0px", left: "-600px", top: "-600px" }); }
 
