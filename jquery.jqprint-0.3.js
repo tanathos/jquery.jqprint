@@ -58,7 +58,13 @@
         doc.close();
         
         (opt.operaSupport && $.browser.opera ? tab : $iframe[0].contentWindow).focus();
-        setTimeout( function() { (opt.operaSupport && $.browser.opera ? tab : $iframe[0].contentWindow).print(); if (tab) { tab.close(); } }, 1000);
+	if (opt.operaSupport && $.browser.opera) {        
+	   tab.print();
+	   tab.close();
+	}
+	else {
+	   $iframe[0].onload = function() { ($iframe[0].contentWindow).print(); };
+	}        
     }
     
     $.fn.jqprint.defaults = {
